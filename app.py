@@ -77,9 +77,8 @@ class Step:
         return(f'Step Information\nName: {self.step_name}\nDescription: {self.step_description}\nDate Added: {self.step_add_date}')
 
 
-# initial attempt on athlete (?) -- keeping for future reference.
-# def athletes():
-#     try:
-#         return "This is the athlete defintion"
-#     except StopIteration:
-#         raise Athlete(f'This athlete does not exist')
+# athlete_01 = Athlete('Andy', 'Stockwell', 'SS', 'UN', today)
+# athlete_02 = Athlete('Nando', 'Roca', 'CO', 'C', today)
+
+# print(athlete_01.athlete_info())
+# print(athlete_02.athlete_info())
