@@ -34,3 +34,7 @@ The classifications are broken down into Grand Master, Master, A, B, C, D, Novic
 ### Goals
 
 ### Steps
+
+## References
+
+USPSA Competition Rules September 2021, USPSA (R)/IPSC, Inc.; Burlington, WA 98233

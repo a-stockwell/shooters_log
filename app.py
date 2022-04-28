@@ -18,7 +18,7 @@ from typing import Optional, List, Set
 # dates for setting general dates in goals and steps
 today = date.today()
 evaluation_date = today + timedelta(days=60)
-targe_date = today + timedelta(days=120)
+target_date = today + timedelta(days=120)
 
 
 class Athlete:
@@ -29,22 +29,22 @@ class Athlete:
         self.current_division = current_division
         self.current_classification = current_classification
 
-    def athlete_add(self):
+    def add(self):
         # used to add the athlete information to the DB
         pass
 
-    def athlete_delete(self):
+    def delete(self):
         # used to delete the athlete information in the DB
         pass
 
-    def athlete_info(self):
+    def info(self):
         # used to display the athlete's information
         try:
             return(f'First Name: {self.first_name}\nLast Name: {self.last_name}\nCurrent Division and Class: {self.current_division} {self.current_classification}')
         except StopIteration:
             raise NoAthlete(f'No athlete found with provided name')
 
-    def athlete_update(self):
+    def update(self):
         # used to update the athlete information in the DB
         pass
 
@@ -56,7 +56,7 @@ class Goal:
         self.goal_description = goal_description
         self.goal_term = goal_term
 
-    def goal_info(self):
+    def info(self):
         return(f'Goal Information\nName: {self.goal_name}\nDescription: {self.goal_description}\nTerm: {self.goal_term}')
 
 
@@ -67,13 +67,14 @@ class NoAthlete(Exception):
 
 class Step:
     # Step information for the system
-    # used to create the Goal piece of the system
-    def __init__(self, step_name: str, step_description: str, step_add_date: date):
+    def __init__(self, step_name: str, step_description: str, step_add_date: date, step_target_date: date, step_evaluation_date: date):
         self.step_name = step_name
         self.step_description = step_description
         self.step_add_date = step_add_date
+        self.step_target_date = step_target_date
+        self.step_evaluation_date = step_evaluation_date
 
-    def step_info(self):
+    def info(self):
         return(f'Step Information\nName: {self.step_name}\nDescription: {self.step_description}\nDate Added: {self.step_add_date}')
 
 

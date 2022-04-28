@@ -11,4 +11,4 @@ def test_goal_info():
     # test thd athlete info display
     test_goal01 = Goal(
         'Improve Draw', 'Working to improve draw time from the holster', 'short')
-    test_goal01.goal_info()
+    test_goal01.info()
