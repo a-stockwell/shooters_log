@@ -35,6 +35,10 @@ The classifications are broken down into Grand Master, Master, A, B, C, D, Novic
 
 ### Steps
 
+## Project Issues and Problems
+
+One issue that I ran into was getting the mapping tests in 'orm_test.py' to return the correct values. I suspect this has to do with the insertion of a row of data in the 'test_repository.py' file. According to the book this can be considered a throwaway test, so I was not extremely concerned about making this test work. Having the tests in 'test_repository.py' pass I feel this is not a worth while endeavor to spend time on at this juncture. 
+
 ## References
 
 USPSA Competition Rules September 2021, USPSA (R)/IPSC, Inc.; Burlington, WA 98233
