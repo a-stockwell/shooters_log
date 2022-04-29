@@ -20,7 +20,7 @@ def test_athlete_delete():
 def test_athlete_info():
     # test thd athlete info display
     test_athlete01 = Athlete(
-        'test first name', 'test Last Name', 'SS', 'C', today)
+        'test first name', 'test Last Name', 'SS', 'C', add_date=None)
     test_athlete01.info()
 
 

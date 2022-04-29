@@ -32,18 +32,13 @@ steps = Table(
     Column("step_id", Integer, primary_key=True, autoincrement=True),
     Column("step_name", String(30)),
     Column("step_description", String(255)),
-    Column("step_add_date", Date, nullable=False),
-    Column("step_target_date", Date, nullable=False),
-    Column("step_evaluation_date", Date, nullable=False),
+    Column("step_add_date", Date, nullable=True),
+    Column("step_target_date", Date, nullable=True),
+    Column("step_evaluation_date", Date, nullable=True),
 )
-
-# need to add the mapper
-# still need to do a little research on what is actually going on with it.
 
 
 def start_mappers():
     lines_mapper = mapper(app.Athlete, athletes)
-    mapper(
-        app.Athlete,
-        athletes
-    )
+    lines_mapper = mapper(app.Goal, goals)
+    lines_mapper = mapper(app.Step, steps)

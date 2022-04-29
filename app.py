@@ -28,6 +28,7 @@ class Athlete:
         self.last_name = last_name
         self.current_division = current_division
         self.current_classification = current_classification
+        self.add_date = add_date
 
     def add(self):
         # used to add the athlete information to the DB
@@ -51,10 +52,11 @@ class Athlete:
 
 class Goal:
     # used to create the Goal piece of the system
-    def __init__(self, goal_name: str, goal_description: str, goal_term: str):
+    def __init__(self, goal_name: str, goal_description: str, goal_term: str, add_date: Optional[date]):
         self.goal_name = goal_name
         self.goal_description = goal_description
         self.goal_term = goal_term
+        self.add_date = add_date
 
     def info(self):
         return(f'Goal Information\nName: {self.goal_name}\nDescription: {self.goal_description}\nTerm: {self.goal_term}')
@@ -67,7 +69,7 @@ class NoAthlete(Exception):
 
 class Step:
     # Step information for the system
-    def __init__(self, step_name: str, step_description: str, step_add_date: date, step_target_date: date, step_evaluation_date: date):
+    def __init__(self, step_name: str, step_description: str, step_add_date: Optional[date], step_target_date: Optional[date], step_evaluation_date: Optional[date]):
         self.step_name = step_name
         self.step_description = step_description
         self.step_add_date = step_add_date

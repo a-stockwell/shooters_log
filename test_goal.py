@@ -10,5 +10,5 @@ today = date.today()
 def test_goal_info():
     # test thd athlete info display
     test_goal01 = Goal(
-        'Improve Draw', 'Working to improve draw time from the holster', 'short')
+        'Improve Draw', 'Working to improve draw time from the holster', 'short', add_date=None)
     test_goal01.info()
