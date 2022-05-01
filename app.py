@@ -46,9 +46,30 @@ class Athlete:
         except StopIteration:
             raise NoAthlete(f'No athlete found with provided name')
 
-    def update(self):
-        # used to update the athlete information in the DB
+#   pulling out of the project
+    # def update(self):
+    #     # used to update the athlete information in the DB
+    #     pass
+
+
+class Run:
+    def __init__(self, athlete_id: int, raw_time: int, mikes: float, penalties: int, add_date: Optional[date]):
+        self.athlete_id = athlete_id
+        self.raw_time = raw_time
+        self.mikes = mikes
+        self.penalties = penalties
+        self.add_date = add_date
+
+    def add(self):
+        # used to add the athlete information to the DB
         pass
+
+    def delete(self):
+        # used to delete the athlete information in the DB
+        pass
+
+    def info(self):
+        return(f'Run Information\nathlete_id: {self.athlete_id}\nraw_time: {self.raw_time}\nmikes: {self.mikes}\npenalites: {self.penalties}\nadd_date: {self.add_date}')
 
 
 # class Goal:
@@ -66,7 +87,6 @@ class Athlete:
 class NoAthlete(Exception):
     # Exception for no found athlete
     pass
-
 
 
 # class Step:

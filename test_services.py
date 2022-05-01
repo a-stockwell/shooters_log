@@ -32,7 +32,7 @@ def test_returns_athlete():
     athlete = app.Athlete("bob", "lathem", "SS", "GM", "2022-04-29")
     repo = FakeRepository([athlete])
 
-    result = services.athelete()
+    result = services.athlete()
 
 
 def test_commits():
