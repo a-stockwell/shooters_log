@@ -53,7 +53,7 @@ class Athlete:
 
 
 class Run:
-    def __init__(self, athlete_id: int, raw_time: int, mikes: float, penalties: int, add_date: Optional[date]):
+    def __init__(self, athlete_id: int, raw_time: float, mikes: int, penalties: int, add_date: Optional[date]):
         self.athlete_id = athlete_id
         self.raw_time = raw_time
         self.mikes = mikes

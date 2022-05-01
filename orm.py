@@ -1,4 +1,4 @@
-from sqlalchemy import Table, MetaData, Column, Integer, String, Date, ForeignKey, column
+from sqlalchemy import Float, Table, MetaData, Column, Integer, String, Date, ForeignKey, column
 from sqlalchemy.orm import mapper, relationship
 
 import app
@@ -21,7 +21,7 @@ runs = Table(
     metadata,
     Column("run_id", Integer, primary_key=True, autoincrement=True),
     Column("athlete_id", Integer),
-    Column("raw_time", float),
+    Column("raw_time", Float),
     Column("mikes", Integer, nullable=True),
     Column("penalties", Integer, nullable=True),
     Column("add_date", Date, nullable=True),
