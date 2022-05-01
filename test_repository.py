@@ -11,7 +11,7 @@ target_date = today + timedelta(days=120)
 
 
 def test_repository_can_add_athlete(session):
-    athlete = app.Athlete("Onename", "lastName", "SS", "GM", None)
+    athlete = app.Athlete("Onename", "lastName", "SS", "GM", today)
 
     repo = repository.SqlAlchemyRepository(session)
     repo.add(athlete)
@@ -35,7 +35,7 @@ def test_repository_can_add_athlete(session):
 
 def test_repository_can_add_run(session):
     # following the pattern above should return the info in the same way.
-    run = app.Run(1, 38.42, 0, 2, '2022-05-01')
+    run = app.Run(1, 33.42, 0, 2, today)
 
     repo = repository.SqlAlchemyRepositoryRun(session)
     repo.add(run)

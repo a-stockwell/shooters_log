@@ -15,6 +15,7 @@ The following are my notes on what I am doing for the setup of the application a
 After talking with Dr. Babb, the application was changed to track the athlete and runs. This simplifies the project and should allow me to get through chapter 6. Additional information on the "runs" has been provided below. Notes added to the Goal and Steps information below as well. 
 
 ### Athlete
+
 For this project, the information on the athlete that will be stored in the database is the shooter’s name, current classification, and current division. These are just what is currently being trained in. A shooter in the United States Practical Shooting Association, USPSA, and Steel Challenge Shooting Association, SCSA, can hold a classification in any division at one time, as most do. The current breakdown of the USPSA divisions includes:
 
 1. Open (Open)
@@ -103,8 +104,32 @@ Change:
     assert athlete == athlete2
 ```
 
-### Date format issues
+## Project insights
+
+### Pytest
+
+As we are doing this project there are several insights that I am taking from pytest. I do like the way it operates, and the flexibility is nice. Being able to target a specific test for execution is nice. With the change in the project I needed to be able to test the 'Run' repository test quickly and the ability to target it made that happen. I was able to find an issue with the data types where not compatible. 
+
+### SQLite
+
+#### Date Time Data Type Issues
 I ran into several date format issues along the way. Not being able to create a correct string with the "stroftime" function, I modified the database set up to allow date fields to be nullable. I have added "None" in several locations as the insert value. In several cases, I have added a string for the day that I was working on the code. This string follows the format of "YYYY-mm-dd" and satisfies the requirements for the testing. 
+
+I've had issues with the date and datetime data types with SQLite. During the addition of the "Run.add()" test I did supply the value of '2022-05-01' for the add_date record. For some reason when the test was run this was kicked out from pytest with the following message:
+
+```python
+raise TypeError(
+                "SQLite Date type only accepts Python "
+                "date objects as input."
+            )
+            sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite Date type only accepts Python date objects as input.
+E           [SQL: INSERT INTO runs (athlete_id, raw_time, mikes, penalties, add_date) VALUES (?, ?, ?, ?, ?)]
+E           [parameters: [{'penalties': 2, 'add_date': '2022-05-01', 'athlete_id': 1, 'mikes': 0, 'raw_time': 38.42}]]
+```
+
+Having setup the 'add_date' values to be able to be null in the database, changing the value to 'None' corrected the issue and the test passed.
+
+While following along with the book I had created at variable 'today' from function 'date.today()'. On a whim I tried using this again as the input, it worked, and both the 'test_repository_can_add_athlete' and 'test_repository_can_add_run' test worked. I do not know what I was doing wrong before. 
 
 ## References
 
