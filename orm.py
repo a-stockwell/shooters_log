@@ -40,5 +40,8 @@ steps = Table(
 
 def start_mappers():
     lines_mapper = mapper(app.Athlete, athletes)
-    lines_mapper = mapper(app.Goal, goals)
-    lines_mapper = mapper(app.Step, steps)
+    # Need to add new mapper for Runs
+
+    # Commenting out the removed mappers.
+    # lines_mapper = mapper(app.Goal, goals)
+    # lines_mapper = mapper(app.Step, steps)

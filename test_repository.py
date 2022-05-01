@@ -31,33 +31,33 @@ def test_repository_can_add_athlete(session):
     # print(list(rows))
     # assert list(rows) == [("Onename", "lastName", "SS", "GM", None)]
 
+# Commenting out the Goal part of the Repository test
+# def test_repository_can_add_goal(session):
+#     goal = app.Goal("Draw Time", "Set a part time for draw.", "Short", None)
 
-def test_repository_can_add_goal(session):
-    goal = app.Goal("Draw Time", "Set a part time for draw.", "Short", None)
+#     repo = repository.SqlAlchemyRepository(session)
+#     repo.add(goal)
+#     session.commit()
 
-    repo = repository.SqlAlchemyRepository(session)
-    repo.add(goal)
-    session.commit()
+#     rows = session.execute(
+#         'SELECT goal_name, goal_description, goal_term, add_date FROM "goals"'
+#     )
+#     assert list(rows) == [
+#         ("Draw Time", "Set a part time for draw.", "Short", None)]
 
-    rows = session.execute(
-        'SELECT goal_name, goal_description, goal_term, add_date FROM "goals"'
-    )
-    assert list(rows) == [
-        ("Draw Time", "Set a part time for draw.", "Short", None)]
+# Commenting out the Step part of the repository test. 
+# def test_repository_can_add_step(session):
+#     # step = app.Step("Master Grip", "Establish a good master grip on the pistol", strftime(
+#     #     '%Y-%m-%d', today), strftime('%Y-%m-%d', target_date), strftime('%Y-%m-%d', evaluation_date))
+#     step = app.Step("Master Grip", "Establish master grip on pistol.",
+#                     step_add_date=None, step_target_date=None, step_evaluation_date=None)
 
+#     repo = repository.SqlAlchemyRepository(session)
+#     repo.add(step)
+#     session.commit()
 
-def test_repository_can_add_step(session):
-    # step = app.Step("Master Grip", "Establish a good master grip on the pistol", strftime(
-    #     '%Y-%m-%d', today), strftime('%Y-%m-%d', target_date), strftime('%Y-%m-%d', evaluation_date))
-    step = app.Step("Master Grip", "Establish master grip on pistol.",
-                    step_add_date=None, step_target_date=None, step_evaluation_date=None)
-
-    repo = repository.SqlAlchemyRepository(session)
-    repo.add(step)
-    session.commit()
-
-    rows = session.execute(
-        'SELECT step_name, step_description, step_add_date, step_target_date, step_evaluation_date FROM "steps"'
-    )
-    assert list(rows) == [
-        ("Master Grip", "Establish master grip on pistol.", None, None, None)]
+#     rows = session.execute(
+#         'SELECT step_name, step_description, step_add_date, step_target_date, step_evaluation_date FROM "steps"'
+#     )
+#     assert list(rows) == [
+#         ("Master Grip", "Establish master grip on pistol.", None, None, None)]
