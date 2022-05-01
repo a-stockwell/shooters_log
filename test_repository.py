@@ -1,3 +1,4 @@
+import re
 from time import strftime
 import app
 import repository
@@ -23,7 +24,7 @@ def test_repository_can_add_athlete(session):
     athlete2 = repo.get(athlete)
     # print(athlete2.info())
 
-    assert athlete == athlete2 #compare the two. 
+    assert athlete == athlete2  # compare the two.
 
     # rows = session.execute(
     #     'SELECT first_name, last_name, current_division, current_classification, add_date FROM "athletes"'
@@ -31,6 +32,21 @@ def test_repository_can_add_athlete(session):
     # print(list(rows))
     # assert list(rows) == [("Onename", "lastName", "SS", "GM", None)]
 
+
+def test_repository_can_add_run(session):
+    # following the pattern above should return the info in the same way.
+    run = app.Run(1, 38.42, 0, 2, '2022-05-01')
+
+    repo = repository.SqlAlchemyRepositoryRun(session)
+    repo.add(run)
+    session.commit()
+
+    run2 = repo.get(run)
+
+    assert run == run2
+
+
+# -------- Goals and Steps info commented out below --------
 # Commenting out the Goal part of the Repository test
 # def test_repository_can_add_goal(session):
 #     goal = app.Goal("Draw Time", "Set a part time for draw.", "Short", None)
@@ -45,7 +61,7 @@ def test_repository_can_add_athlete(session):
 #     assert list(rows) == [
 #         ("Draw Time", "Set a part time for draw.", "Short", None)]
 
-# Commenting out the Step part of the repository test. 
+# Commenting out the Step part of the repository test.
 # def test_repository_can_add_step(session):
 #     # step = app.Step("Master Grip", "Establish a good master grip on the pistol", strftime(
 #     #     '%Y-%m-%d', today), strftime('%Y-%m-%d', target_date), strftime('%Y-%m-%d', evaluation_date))

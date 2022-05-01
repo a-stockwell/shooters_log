@@ -25,3 +25,14 @@ def athlete_endpoint():
     )
 
     athleteref = app.Athlete()
+
+
+@app.route("/run", methods=["POST"])
+def athlete_endpoint():
+    session = get_session()
+    repo = repository.SqlAlchemyRepository(session).list()
+    run = app.Run(
+        request.json["athlete_id"], request.json["raw_time"], request.json["mikes"], request.json["penalties"], request.json["add_date"],
+    )
+
+    runref = app.Run()

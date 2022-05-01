@@ -30,7 +30,7 @@ runs = Table(
 
 def start_mappers():
     lines_mapper = mapper(app.Athlete, athletes)
-    lines_mapper = mapper(app.Runs, runs)   # added new mapper for Runs
+    lines_mapper = mapper(app.Run, runs)   # added new mapper for Runs
     # Commenting out the removed mappers.
     # lines_mapper = mapper(app.Goal, goals)
     # lines_mapper = mapper(app.Step, steps)

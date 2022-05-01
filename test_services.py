@@ -1,3 +1,10 @@
+'''
+Test for the Services.py file.
+
+This should move the tests from the domain level to the services level in the pattern.
+
+So the test_athlete and test_runs should live here now, if my understanding is correct. This is a combination of chapter 4 and 5. 
+'''
 from unittest import result
 
 from requests import session
@@ -32,7 +39,7 @@ def test_returns_athlete():
     athlete = app.Athlete("bob", "lathem", "SS", "GM", "2022-04-29")
     repo = FakeRepository([athlete])
 
-    result = services.athlete()
+    result = services.is_athlete()
 
 
 def test_commits():
