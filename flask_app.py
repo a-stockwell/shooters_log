@@ -1,4 +1,3 @@
-from audioop import lin2adpcm
 from crypt import methods
 from flask import Flask, request
 from sqlalchemy import create_engine
@@ -30,7 +29,7 @@ def athlete_endpoint():
 @app.route("/run", methods=["POST"])
 def athlete_endpoint():
     session = get_session()
-    repo = repository.SqlAlchemyRepository(session).list()
+    repo = repository.SqlAlchemyRepositoryRun(session).list()
     run = app.Run(
         request.json["athlete_id"], request.json["raw_time"], request.json["mikes"], request.json["penalties"], request.json["add_date"],
     )

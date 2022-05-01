@@ -17,8 +17,8 @@ from typing import Optional, List, Set
 
 # dates for setting general dates in goals and steps
 today = date.today()
-evaluation_date = today + timedelta(days=60)
-target_date = today + timedelta(days=120)
+# evaluation_date = today + timedelta(days=60)
+# target_date = today + timedelta(days=120)
 
 
 class Athlete:
@@ -35,9 +35,9 @@ class Athlete:
         # used to add the athlete information to the DB
         pass
 
-    def delete(self):
-        # used to delete the athlete information in the DB
-        pass
+    # def delete(self):
+    #     # used to delete the athlete information in the DB
+    #     pass
 
     def info(self):
         # used to display the athlete's information
@@ -64,9 +64,9 @@ class Run:
         # used to add the athlete information to the DB
         pass
 
-    def delete(self):
-        # used to delete the athlete information in the DB
-        pass
+    # def delete(self):
+    #     # used to delete the athlete information in the DB
+    #     pass
 
     def info(self):
         return(f'Run Information\nathlete_id: {self.athlete_id}\nraw_time: {self.raw_time}\nmikes: {self.mikes}\npenalites: {self.penalties}\nadd_date: {self.add_date}')

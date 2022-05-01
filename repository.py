@@ -22,6 +22,7 @@ class SqlAlchemyRepository(AbstractRepository):
 
     def add(self, athlete):
         self.session.add(athlete)
+        # self.session.first_name()
 
     def get(self, athlete):
         return self.session.query(app.Athlete).filter_by(athlete_id=athlete.athlete_id).one()
@@ -29,8 +30,8 @@ class SqlAlchemyRepository(AbstractRepository):
     def list(self):
         return self.session.query(app.Athlete).all()
 
-# Run repository information
-class RunAbstractRepository(abc.ABC):
+
+class AbstractRepositoryRun(abc.ABC):
     @abc.abstractmethod
     def add(self, run: app.Run):
         raise NotImplementedError
@@ -40,7 +41,7 @@ class RunAbstractRepository(abc.ABC):
         raise NotImplementedError
 
 
-class SqlAlchemyRepositoryRun(RunAbstractRepository):
+class SqlAlchemyRepositoryRun(AbstractRepositoryRun):
     def __init__(self, session):
         self.session = session
 

@@ -1,4 +1,3 @@
-import re
 from time import strftime
 import app
 import repository
@@ -11,7 +10,7 @@ target_date = today + timedelta(days=120)
 
 
 def test_repository_can_add_athlete(session):
-    athlete = app.Athlete("Onename", "lastName", "SS", "GM", today)
+    athlete = app.Athlete("Test_first", "Test_last", "SS", "GM", today)
 
     repo = repository.SqlAlchemyRepository(session)
     repo.add(athlete)
