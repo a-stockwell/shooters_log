@@ -16,10 +16,20 @@ def test_repository_can_add_athlete(session):
     repo.add(athlete)
     session.commit()
 
-    rows = session.execute(
-        'SELECT first_name, last_name, current_division, current_classification, add_date FROM "athletes"'
-    )
-    assert list(rows) == [("Onename", "lastName", "SS", "GM", None)]
+    # print(athlete.info())
+
+    # Use Get method to grab the latest athlete that was created just above.
+    # Stores into another object so they can be compaired.
+    athlete2 = repo.get(athlete)
+    # print(athlete2.info())
+
+    assert athlete == athlete2 #compare the two. 
+
+    # rows = session.execute(
+    #     'SELECT first_name, last_name, current_division, current_classification, add_date FROM "athletes"'
+    # )
+    # print(list(rows))
+    # assert list(rows) == [("Onename", "lastName", "SS", "GM", None)]
 
 
 def test_repository_can_add_goal(session):

@@ -24,6 +24,7 @@ target_date = today + timedelta(days=120)
 class Athlete:
     def __init__(self, first_name: str, last_name: str, current_division: str, current_classification: str, add_date: Optional[date]):
         # init for the athlete
+        # self.athlete_id = athlete_id
         self.first_name = first_name
         self.last_name = last_name
         self.current_division = current_division
@@ -50,16 +51,16 @@ class Athlete:
         pass
 
 
-class Goal:
-    # used to create the Goal piece of the system
-    def __init__(self, goal_name: str, goal_description: str, goal_term: str, add_date: Optional[date]):
-        self.goal_name = goal_name
-        self.goal_description = goal_description
-        self.goal_term = goal_term
-        self.add_date = add_date
+# class Goal:
+#     # used to create the Goal piece of the system
+#     def __init__(self, goal_name: str, goal_description: str, goal_term: str, add_date: Optional[date]):
+#         self.goal_name = goal_name
+#         self.goal_description = goal_description
+#         self.goal_term = goal_term
+#         self.add_date = add_date
 
-    def info(self):
-        return(f'Goal Information\nName: {self.goal_name}\nDescription: {self.goal_description}\nTerm: {self.goal_term}')
+#     def info(self):
+#         return(f'Goal Information\nName: {self.goal_name}\nDescription: {self.goal_description}\nTerm: {self.goal_term}')
 
 
 class NoAthlete(Exception):
@@ -67,21 +68,22 @@ class NoAthlete(Exception):
     pass
 
 
-class Step:
-    # Step information for the system
-    def __init__(self, step_name: str, step_description: str, step_add_date: Optional[date], step_target_date: Optional[date], step_evaluation_date: Optional[date]):
-        self.step_name = step_name
-        self.step_description = step_description
-        self.step_add_date = step_add_date
-        self.step_target_date = step_target_date
-        self.step_evaluation_date = step_evaluation_date
 
-    def info(self):
-        return(f'Step Information\nName: {self.step_name}\nDescription: {self.step_description}\nDate Added: {self.step_add_date}')
+# class Step:
+#     # Step information for the system
+#     def __init__(self, step_name: str, step_description: str, step_add_date: Optional[date], step_target_date: Optional[date], step_evaluation_date: Optional[date]):
+#         self.step_name = step_name
+#         self.step_description = step_description
+#         self.step_add_date = step_add_date
+#         self.step_target_date = step_target_date
+#         self.step_evaluation_date = step_evaluation_date
+
+#     def info(self):
+#         return(f'Step Information\nName: {self.step_name}\nDescription: {self.step_description}\nDate Added: {self.step_add_date}')
 
 
-# athlete_01 = Athlete('Andy', 'Stockwell', 'SS', 'UN', today)
-# athlete_02 = Athlete('Nando', 'Roca', 'CO', 'C', today)
-
-# print(athlete_01.athlete_info())
-# print(athlete_02.athlete_info())
+def athlete() -> str:
+    try:
+        pass
+    except StopIteration:
+        raise NoAthlete(f"No Athlete by the provided name")
