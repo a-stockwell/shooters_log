@@ -1,4 +1,6 @@
-'''If my understanind is correct we are moving the functions and meathods from the '''
+'''
+If my understanind is correct we are moving the functions and meathods from the files that they are currently in and into this services file. 
+'''
 from __future__ import annotations
 
 import app
@@ -15,11 +17,11 @@ def is_valid_athlete(athlete, athletes):
 
 
 def add_athlete(athlete: Athlete, repo: AbstractRepository, session) -> str:
-    repo.add(athlete)
+    a = repo.add(athlete)
 
 
 def list_athlete():
     pass
-    # Was pulled from the 
+    # Was pulled from the
     # if not is_valid_athlete(athlete.athlete_id, athletes):
     #     raise InvalidAthlete(f"No Athlete {athlete.athlete_id}")

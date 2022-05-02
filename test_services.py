@@ -29,7 +29,7 @@ def test_add_athlete(session):
     # repo = FakeRepository([athlete])
     # repo = repository.SqlAlchemyRepository(test_athlete)
     repo = repository.SqlAlchemyRepository([test_athlete])
-    result = services.add_athlete(test_athlete)
+    result = services.add_athlete(test_athlete, repo, session)
 
 
 def test_add_run(session):

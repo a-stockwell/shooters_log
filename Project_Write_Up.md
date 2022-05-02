@@ -1,12 +1,19 @@
-﻿# Project Information and Write Up
+﻿# Final Project Information and Write Up
 
-## Background
+**Robert Stockwell**  
+West Texas A&M University  
+CIDM 6330 Spring 2022  
+May 1st, 2022  
+
+## Background and Problem Statement
 
 This idea came from a discussion during an advanced movement training class with Coach Kita Busse with 180 Firearms Training. The class ended up being more of a how-to train yourself by setting goals and tracking progress on attaining those goals. Improving this requires deliberate practice and following specific goals that should be followed and recorded to track and view progress. There are many types of shooting sports out there, and training and proficiency allow shooting competitors to improve against themselves and other fellow competitors. The three main shooting sports in the United States are the United States Practical Shooting Association, USPSA, Steel Challenge Shooting Association, and International Defensive Pistol Association, IPDA. 
 
 A quick primer on the three shooting sports. When talking with people in the general public that are not familiar with shooting sports, the individual sports get compared to auto racing types. USPSA is compared with Open Wheeled Indy Racing, with lots of movement, and try and go as fast as you can without crashing. Steel Challenge is the funny car drag racing of the competitive shooting world. The same eight short courses of fire as fast as you can. IDPA is considered the NASCAR of the shooting world. Course layouts that everyone pretty much follows, there are some movement changes but not many, with equipment that is pretty close in specifications. 
 
 USPSA is the largest and probably the most active of the sports and has the highest associated cost with participating. Steel Challenge will be the easiest and cheapest to get involved with. The rimfire division in Steel Challenge allows an individual to go to a match and participate with a gun and relatively inexpensive ammunition, not requiring the belts and magazine carriers like USPAS and IDPA.  
+
+To track a shooter’s performance against either themselves or other shooters, there needs to be a way to track and compare. To start this, shooters are broken into the same skill level with the division and classification they are participating in. The rest is followed by the total time of a course of fire. Total time is a summation of the raw time, misses, and other penalties, such as procedural errors. 
 
 ## Program Setup and Information
 
@@ -22,7 +29,7 @@ For this project, the information on the athlete that will be stored in the data
 2. Limited (Lim)
 3. Production (Prod)
 4. Single Stack (SS)
-5. Revolver (Rev)
+5. Revolver (REV)
 6. Carry Optics (CO)
 7. Pistol Caliber Carbine (PCC)
 
@@ -32,13 +39,13 @@ For this project, the information on the athlete that will be stored in the data
 9. Rimfire Pistol Optics (RFPO)
 10. Rimfire Rifle Iron Sights (RFRI)
 11. Rimfire Rifle Optics (RFRO)
-13. Revolver Optics (RevO)
+13. Revolver Optics (REVO)
 14. Pistol Caliber Carbine Iron (PCCI)
 
 
 The shortened nomenclature will be used for storing the information in the database; Production will be Prod, Carry Optics will be CO, etc. 
 
-The classifications are broken down into Grand Master, Master, A, B, C, D, Novice, and Unclassified. To determine the shooter’s classification, they are placed into a percentage bracket. The shooter’s "percentage is based on your scores as they relate to the average high scores on file for a particular course of fire. To receive an initial classification, a member needs to have at least four unduplicated scores in the USPSA classification database. If there are more than four scores on file, the best four scores of the most recent six scores will be used. Scores are sorted according to the match date to determine which scores are the most recent. For matches that are Level I Specials, the scores are further sorted by the score percent in descending order. In doing so, the lowest scores from a special will be the first scores to drop out of the most recent scores on file. After a member has earned a classification, the classification system will look at the best six unduplicated scores of the most recent eight to evaluate the member’s current classification percentage." Standard identifiers will be used in the database; please see the table below. 
+The classifications are broken down into Grand Master, Master, A, B, C, D, Novice, and Unclassified. To determine the shooter’s classification, they are placed into a percentage bracket. The shooter’s "percentage is based on your scores as they relate to the average high scores on file for a particular course of fire. To receive an initial classification, a member needs to have at least four unduplicated scores in the USPSA classification database. If there are more than four scores on file, the best four scores of the most recent six scores will be used. Scores are sorted according to the match date to determine which scores are the most recent. For matches that are Level I Specials, the scores are further sorted by the score percent in descending order. In doing so, the lowest scores from a special will be the first scores to drop out of the most recent scores on file. After a member has earned a classification, the classification system will look at the best six unduplicated scores of the most recent eight to evaluate the member’s current classification percentage." (USPSA / IPSC, Inc., 2021) Standard identifiers will be used in the database; please see the table below. 
 
 | Classification | Short Id |                          Percentage |
 | :------------- | :------: | ----------------------------------: |
@@ -64,11 +71,62 @@ Goals information was removed after the change to the project setup. All info wa
 
 Steps are the action items that a shooter is planning on taking to improve an identified goal. 
 
-After the project was updated, the information and code for the steps were commented out. It is being left intact, as much as was there, so that it can be reviewed and fleshed out later. 
+After the project was updated, the information and code for the steps were commented out. As much as was there, it is being left intact to be reviewed and fleshed out later. 
 
-## Project Issues and Problems
+## Models
+
+### Domain
+
+Using the above information of the problem set, the domain model ends up like this.
+
+![Shooters Log Domain Model](Shooter_Log-Domain.png "Shooters Log Domain Model")
+
+### Services
+
+![Shooters Log Services Model](Shooter_Log-Services.png "Shooters Log Services Model")
+
+### Unit of Work
+
+## Project Validation and Justification
+
+### My skill level
+
+So as I have been working on this project, it has quickly become apparent that I need to increase my Python skill level. I am having difficulty following along and understanding the code and what is happening. When rereading the preface in the "Who Should Read This Book," the first thing they assume about the reader.
+
+> * You've been close to some reasonably complex Python applications.
+> * You've seen some of the pain that comes with trying to manage that complexity
+> * You don't necessarily know anything about DDD or any of the classic application architecture patterns. (Gregory, 2020)
+
+After working through this project, I do not meet the first criteria. Over the summer, I will be working on correcting that. I do not know if this pertains to the project; I feel it needs to be stated, so there is a goal. Now to start setting actionable steps. 
+
+### Pytest
+
+As we are doing this project, I am taking several insights from pytest. I do like the way it operates, and the flexibility is excellent. Being able to target a specific test for execution is nice. With the change in the project, I needed to be able to test the 'Run' repository test quickly, and the ability to target it made that happen. I was able to find an issue with the data types were not compatible. 
+
+### SQLite
+
+#### Date Time Data Type Issues
+I ran into several date format issues along the way. Not being able to create a correct string with the "stroftime" function, I modified the database set up to allow date fields to be nullable. I have added "None" in several locations as the insert value. I have added a string for the day I worked on the code in several cases. This string follows the format of "YYYY-mm-dd" and satisfies the requirements for the testing. 
+
+I've had issues with the date and DateTime data types with SQLite. During the addition of the "Run.add()" test, I supplied the value of '2022-05-01' for the add_date record. For some reason, when the test was run, this was kicked out from pytest with the following message:
+
+```python
+raise TypeError(
+                "SQLite Date type only accepts Python "
+                "date objects as input."
+            )
+            sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite Date type only accepts Python date objects as input.
+E           [SQL: INSERT INTO runs (athlete_id, raw_time, mikes, penalties, add_date) VALUES (?, ?, ?, ?, ?)]
+E           [parameters: [{'penalties': 2, 'add_date': '2022-05-01', 'athlete_id': 1, 'mikes': 0, 'raw_time': 38.42}]]
+```
+
+Having set up the 'add_date' values to be able to be null in the database, changing the value to 'None' corrected the issue, and the test passed.
+
+While following along with the book, I had created a variable 'today' from function 'date.today()'. On a whim, I tried using this again as the input, it worked, and both the 'test_repository_can_add_athlete' and 'test_repository_can_add_run' test worked. I do not know what I was doing wrong before. 
 
 ### Testing
+
+#### Repository.py
 
 One issue that I ran into was getting the mapping tests in 'orm_test.py' to return the correct values. I suspect this has to do with inserting a row of data in the 'test_repository.py' file. According to the book, this can be considered a throwaway test, so I was not highly concerned about making this test work. Having the tests in 'test_repository.py' pass, I feel this is not a worthwhile endeavor to spend time on.
 
@@ -104,33 +162,31 @@ Change:
     assert athlete == athlete2
 ```
 
-## Project insights
+#### Services.py
 
-### Pytest
-
-As we are doing this project there are several insights that I am taking from pytest. I do like the way it operates, and the flexibility is nice. Being able to target a specific test for execution is nice. With the change in the project I needed to be able to test the 'Run' repository test quickly and the ability to target it made that happen. I was able to find an issue with the data types where not compatible. 
-
-### SQLite
-
-#### Date Time Data Type Issues
-I ran into several date format issues along the way. Not being able to create a correct string with the "stroftime" function, I modified the database set up to allow date fields to be nullable. I have added "None" in several locations as the insert value. In several cases, I have added a string for the day that I was working on the code. This string follows the format of "YYYY-mm-dd" and satisfies the requirements for the testing. 
-
-I've had issues with the date and datetime data types with SQLite. During the addition of the "Run.add()" test I did supply the value of '2022-05-01' for the add_date record. For some reason when the test was run this was kicked out from pytest with the following message:
+I have ended up in a logic circle that I can't seem to break out of. Receiving this error when trying to run the add function at the services level. The repository and repository test are working fine. The missing "repo" and "session" are then added to the test. The lower error is returned when those are added. I am again running into my lack of knowledge of a more complex Python project.
 
 ```python
-raise TypeError(
-                "SQLite Date type only accepts Python "
-                "date objects as input."
-            )
-            sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite Date type only accepts Python date objects as input.
-E           [SQL: INSERT INTO runs (athlete_id, raw_time, mikes, penalties, add_date) VALUES (?, ?, ?, ?, ?)]
-E           [parameters: [{'penalties': 2, 'add_date': '2022-05-01', 'athlete_id': 1, 'mikes': 0, 'raw_time': 38.42}]]
+def test_add_athlete(session):
+        test_athlete = app.Athlete("robert", "lathem", "SS", "GM", today)
+        # repo = FakeRepository([athlete])
+        # repo = repository.SqlAlchemyRepository(test_athlete)
+        repo = repository.SqlAlchemyRepository([test_athlete])
+>       result = services.add_athlete(test_athlete)
+E       TypeError: add_athlete() missing 2 required positional arguments: 'repo' and 'session'
 ```
+After a computer shutdown and restart this is not the same error being returned. This might be progress. 
+```python
+self = <repository.SqlAlchemyRepository object at 0x000002BDD380D3D0>, athlete = <app.Athlete object at 0x000002BDD380D190>
 
-Having setup the 'add_date' values to be able to be null in the database, changing the value to 'None' corrected the issue and the test passed.
+    def add(self, athlete):
+>       self.session.add(athlete)
+E       AttributeError: 'list' object has no attribute 'add'
 
-While following along with the book I had created at variable 'today' from function 'date.today()'. On a whim I tried using this again as the input, it worked, and both the 'test_repository_can_add_athlete' and 'test_repository_can_add_run' test worked. I do not know what I was doing wrong before. 
-
+repository.py:24: AttributeError
+```
 ## References
 
-USPSA Competition Rules September 2021, USPSA (R)/IPSC, Inc.; Burlington, WA 98233
+Gregory, H.J. (2020). *Architecture Patterns with Python.* Sebastopol: O’Reilly Media, Inc.
+
+USPAS/IPSC, Inc. (2021). *USPAS Competition Rules.* Burlington: USPAS/IPSC. Inc.
