@@ -80,13 +80,15 @@ After the project was updated, the information and code for the steps were comme
 
 Using the above information of the problem set, the domain model ends up like this.
 
-image::Shooter_Log-Domain.png[Shooters Log Domain Model,title="Shooters Log Domain Model"]
+image::Shooter_Log-Domain.png[Shooters Log Domain Model,width=323,height=256,title="Shooters Log Domain Model"]
 
 === Services
 
-image::Shooter_Log-Services.png[Shooters Log Services Model,title="Shooters Log Services Model"]
+image::Shooter_Log-Services.png[Shooters Log Services Model,width=593,height=526,title="Shooters Log Services Model"]
 
 === Unit of Work
+
+image::Shooter_Log-UOW.png[Shooters Log Unit of Work Model,width=676,height=556,title="Shooters Log Unit of Work Model"]
 
 == Project Validation and Justification
 
